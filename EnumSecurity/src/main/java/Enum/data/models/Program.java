@@ -1,19 +1,16 @@
 package Enum.data.models;
 
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "program")
 @Getter
 @Setter
 @ToString
+@Document("Program")
 public class Program {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    private String id;
     private String programName;
 }

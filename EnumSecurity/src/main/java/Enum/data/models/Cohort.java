@@ -1,39 +1,24 @@
 package Enum.data.models;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-
-import static Enum.utils.AppUtils.ONE_YEAR;
-import static jakarta.persistence.CascadeType.ALL;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "cohorts")
+@Document("Cohort")
 public class Cohort {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(unique = true, nullable = false)
+    private String id;
     private String cohortName;
-
-    @Column(nullable = false, columnDefinition = "MEDIUMTEXT", length = 1000)
     private String description;
-
-    @ManyToMany(fetch = FetchType.EAGER)
     private List<Program> programs;
     private String startDate;
-
     private String endDate;
-
     private String  avatarImageUrl;
 
 
